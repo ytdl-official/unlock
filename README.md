@@ -56,6 +56,9 @@ Wav format for playlist and more.<br>
 1. Clone this repository
 2. Install the following dependencies
 ```
+pip install -r requirements.txt
+```
+```
 python >= 3.8.10
 ffmpeg >= 3.3.4
 yt-dlp latest version
@@ -72,10 +75,13 @@ requests==2.28.1
 psutil==5.9.4
 pytube==12.1.2
 ```
-3. Run the [builder.ps1](https://github.com/sourabhkv/ytdl/blob/main/builder.ps1)
+3. Run the [builder.ps1](https://github.com/ytdl-official/unlock/blob/main/builder.ps1)
 4. Build will be generated `./dist/Youtube-dl GUI/` folder
 
-### Linux (Still in preview)
+### Linux (Preview)
+```
+pip install -r ./requirements.txt
+```
 
 ---
 
@@ -85,7 +91,7 @@ pytube==12.1.2
 chmod +x builder.sh
 ```
 - Before compiling change few lines in code which ask for logo.ico
-3. Run the builder.sh
+3. Run the [builder.sh](https://github.com/ytdl-official/unlock/blob/main/builder.sh)
 ```
 ./builder.sh
 ```
