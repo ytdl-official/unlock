@@ -1049,11 +1049,11 @@ class App(tk.Tk):
             self.pausebtn.config(image=self.pausepic, command = lambda: self.pause(self.cmd))
             self.status.set(" Resuming download")
         self.pausebtn.config(image=self.pausepic, command = lambda: self.pause(self.cmd))
-        file2=open(os.getcwd()+"\\database\\cookies.txt",'r')
+        file2=open("./database/cookies.txt",'r')
         if len(file2.readlines())!=0:
             cmd=cmd+" --cookies "+file2.readlines()[0]
         file2.close()
-        file3=open(os.getcwd()+"\\database\\args.txt",'r')
+        file3=open("./database/args.txt",'r')
         if len(file3.readlines())!=0:
             cmd=cmd+" "+file3.readlines()[0]
         file3.close()
@@ -1317,7 +1317,7 @@ class Window(tk.Toplevel):
         streams2 = Label(self, text = "https://github.com/sourabhkv/ytdl",bg="#303135",fg="white").place(relx=.5, rely=.87,anchor= CENTER)
         streams2 = Label(self, text = "Developed by sourabhkv",bg="#303135",fg="green").place(relx=.5, rely=.93,anchor= CENTER)
         self.resizable(False, False)
-        self.iconbitmap(r'logo.ico')
+        self.iconbitmap('./logo.ico')
 
 class Settings(tk.Toplevel):
     def __init__(self, parent):
@@ -1390,7 +1390,7 @@ class Settings(tk.Toplevel):
         self.cookiepath.place(x=20,y=158)
         Button(self, text =".", command = self.cookieselect).place(x=455,y=156)
         self.resizable(False, False)
-        self.iconbitmap(r'logo.ico')
+        self.iconbitmap('./logo.ico')
         
     def cookieselect(self):
         r = filedialog.askopenfilename()
