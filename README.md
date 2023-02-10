@@ -1,5 +1,4 @@
 # unlock
-ytdl fork with additional features
 
 <p align="center">
 <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/downloads/sourabhkv/ytdl/total?logo=GitHub"></a>
@@ -20,7 +19,7 @@ ytdl fork with additional features
 <a href="https://sourabhkv.github.io/ytdl/"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/sourabhkv/ytdl?color=violet&label=Download%20latest&logo=windows&logoColor=%230574FF&style=for-the-badge"></a>
 </p>
 
-A GUI program that runs on top of yt-dlp and ffmpeg to download videos and audio. **This project is only for educational purpose DO NOT SELL . DO NOT 
+A ( ytdl fork ) GUI program that runs on top of yt-dlp and ffmpeg to download videos and audio. **This project is only for educational purpose DO NOT SELL . DO NOT 
 plagiarize. USE AT YOUR RISK . I DO NOT PROMOTE ANY ILLEGAL DOWNLOADS .**<br>
 
 　　　　　　　　　　　　　　　　　　　　![python](https://user-images.githubusercontent.com/55890376/208916421-d983d873-8dd8-4d53-949a-16959f9f6df9.png)&nbsp;&nbsp;&nbsp;&nbsp;
@@ -57,6 +56,9 @@ Wav format for playlist and more.<br>
 1. Clone this repository
 2. Install the following dependencies
 ```
+pip install -r requirements.txt
+```
+```
 python >= 3.8.10
 ffmpeg >= 3.3.4
 yt-dlp latest version
@@ -73,10 +75,13 @@ requests==2.28.1
 psutil==5.9.4
 pytube==12.1.2
 ```
-3. Run the [builder.ps1](https://github.com/sourabhkv/ytdl/blob/main/builder.ps1)
+3. Run the [builder.ps1](https://github.com/ytdl-official/unlock/blob/main/builder.ps1)
 4. Build will be generated `./dist/Youtube-dl GUI/` folder
 
-### Linux (Still in preview)
+### Linux (Preview)
+```
+pip install -r ./requirements.txt
+```
 
 ---
 
@@ -86,7 +91,7 @@ pytube==12.1.2
 chmod +x builder.sh
 ```
 - Before compiling change few lines in code which ask for logo.ico
-3. Run the builder.sh
+3. Run the [builder.sh](https://github.com/ytdl-official/unlock/blob/main/builder.sh)
 ```
 ./builder.sh
 ```
