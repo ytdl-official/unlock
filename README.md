@@ -1,5 +1,4 @@
 # unlock
-ytdl fork with additional features
 
 <p align="center">
 <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/downloads/sourabhkv/ytdl/total?logo=GitHub"></a>
@@ -20,7 +19,7 @@ ytdl fork with additional features
 <a href="https://sourabhkv.github.io/ytdl/"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/sourabhkv/ytdl?color=violet&label=Download%20latest&logo=windows&logoColor=%230574FF&style=for-the-badge"></a>
 </p>
 
-A GUI program that runs on top of yt-dlp and ffmpeg to download videos and audio. **This project is only for educational purpose DO NOT SELL . DO NOT 
+A ( ytdl fork ) GUI program that runs on top of yt-dlp and ffmpeg to download videos and audio. **This project is only for educational purpose DO NOT SELL . DO NOT 
 plagiarize. USE AT YOUR RISK . I DO NOT PROMOTE ANY ILLEGAL DOWNLOADS .**<br>
 
 　　　　　　　　　　　　　　　　　　　　![python](https://user-images.githubusercontent.com/55890376/208916421-d983d873-8dd8-4d53-949a-16959f9f6df9.png)&nbsp;&nbsp;&nbsp;&nbsp;
