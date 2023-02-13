@@ -21,10 +21,7 @@ from io import BytesIO
 from zipfile import ZipFile
 from tkinter import scrolledtext
 import webbrowser
-rloc=str(__file__)
-print(rloc)
-print(rloc[:rloc.rfind("\\")])
-os.chdir(rloc[:rloc.rfind("\\")])
+
 class App(tk.Tk):
     def __init__(self,*args):
         super().__init__()
@@ -947,7 +944,7 @@ class App(tk.Tk):
                 ele="\n"+ClipBoard
                 e1.insert(float(r), ele )
         except:
-            AnnoyingWindow.destroy()
+            Clipper.destroy()
             messagebox.showerror("Youtube-dl GUI","URL should be in text")
 
     def on_closing(self):
@@ -1049,11 +1046,11 @@ class App(tk.Tk):
             self.pausebtn.config(image=self.pausepic, command = lambda: self.pause(self.cmd))
             self.status.set(" Resuming download")
         self.pausebtn.config(image=self.pausepic, command = lambda: self.pause(self.cmd))
-        file2=open(os.getcwd()+"\\database\\cookies.txt",'r')
+        file2=open("./database/cookies.txt",'r')
         if len(file2.readlines())!=0:
             cmd=cmd+" --cookies "+file2.readlines()[0]
         file2.close()
-        file3=open(os.getcwd()+"\\database\\args.txt",'r')
+        file3=open("./database/args.txt",'r')
         if len(file3.readlines())!=0:
             cmd=cmd+" "+file3.readlines()[0]
         file3.close()
@@ -1139,7 +1136,7 @@ class App(tk.Tk):
                 title=self.custom_name.get()
             else:
                 title=""
-        file4=open(".\\database\\history.txt",'a')
+        file4=open("./database/history.txt",'a')
         location=self.e2.get()
         log=title+"^"+url+"^"+dt_string+"^"+location+"^"+"\n"
         try:
@@ -1317,7 +1314,7 @@ class Window(tk.Toplevel):
         streams2 = Label(self, text = "https://github.com/sourabhkv/ytdl",bg="#303135",fg="white").place(relx=.5, rely=.87,anchor= CENTER)
         streams2 = Label(self, text = "Developed by sourabhkv",bg="#303135",fg="green").place(relx=.5, rely=.93,anchor= CENTER)
         self.resizable(False, False)
-        self.iconbitmap(r'logo.ico')
+        self.iconbitmap('./logo.ico')
 
 class Settings(tk.Toplevel):
     def __init__(self, parent):
@@ -1390,7 +1387,7 @@ class Settings(tk.Toplevel):
         self.cookiepath.place(x=20,y=158)
         Button(self, text =".", command = self.cookieselect).place(x=455,y=156)
         self.resizable(False, False)
-        self.iconbitmap(r'logo.ico')
+        self.iconbitmap('./logo.ico')
         
     def cookieselect(self):
         r = filedialog.askopenfilename()
@@ -1403,54 +1400,40 @@ class Settings(tk.Toplevel):
         c2=self.cookiepath.get()
         c3=self.out_vid.get()
         c4=self.out_plst.get()
-        file2=open("./database/cookies.txt",'w+')
-        file2.write(c2)
-        file2.close()
-        file3=open("./database/args.txt",'w+')
-        file3.write(c1)
-        file3.close()
-        file4=open("./database/output_temp_vid.txt",'w+')
-        file4.write(c3)
-        file4.close()
-        file4=open("./database/output_temp_playlist.txt",'w+')
-        file4.write(c4)
-        file4.close()
-        file8=open("./database/multivideo.txt","w+")
-        file8.write(self.video.get()+"\n"+self.audio.get())
-        file8.close()
+        
+        for i,j in {"./database/args.txt":c1,"./database/cookies.txt":c2,"./database/output_temp_vid.txt":c3,"./database/output_temp_playlist.txt":c4,"./database/multivideo.txt":self.video.get()+"\n"+self.audio.get()}.items():
+            with open(i,"w+") as file:
+                file.write(j)
+
         self.destroy()
         messagebox.showinfo("Youtube-dl GUI", "Settings saved!")
 
         
 
 if __name__ == "__main__":
-    s=__file__[:__file__.rfind("\\")]+"\\database"
-    if os.path.exists(s):
+    path = os.path.realpath(os.path.abspath(__file__))
+    PATH = (os.path.dirname(path))
+    os.chdir(PATH)
+
+    
+    
+    if os.path.exists("./database"):
         pass
     else:
-        os.makedirs(s,exist_ok=False)
-        os.makedirs(s+"\\update",exist_ok=False)
-        file = open(s+"\\loc.txt",'w+')
-        file.write((os.path.expanduser('~')+"\\Downloads").replace("\\","/"))
+        os.makedirs("./database",exist_ok=False)
+        os.makedirs("./database/update",exist_ok=False)
+        file = open("./database/loc.txt",'w+')
+        if os.name=='nt':
+            file.write((os.path.expanduser('~')+"\\Downloads").replace("\\","/"))
+        elif os.name=='posix':
+            file.write((os.path.expanduser('~')+"/Downloads"))
         file.close()
-        file2=open(s+"\\cookies.txt",'w+')
-        file2.close()
-        file3=open(s+"\\args.txt",'w+')
-        file3.close()
-        file4=open(s+"\\history.txt",'w+')
-        file4.close()
-        file5=open(s+"\\log.txt",'w+')
-        file5.write(str(time.time()))
-        file5.close()
-        file6=open(s+"\\output_temp_vid.txt",'w+')
-        file6.write("%(title)s.%(ext)s")
-        file6.close()
-        file7=open(s+"\\output_temp_playlist.txt",'w+')
-        file7.write("%(playlist_title)s %(playlist_index)s %(title)s.%(ext)s")
-        file7.close()
-        file8=open(s+"\\multivideo.txt","w+")
-        file8.write("360p\nwa")
-        file8.close()
+        for i,j in {"./database/cookies.txt":"","./database/args.txt":"","./database/history.txt":"","./database/log.txt":str(time.time()),"./database/output_temp_vid.txt":"%(title)s.%(ext)s","./database/output_temp_playlist.txt":"%(playlist_title)s %(playlist_index)s %(title)s.%(ext)s","./database/multivideo.txt":"360p\nwa"}.items():
+            with open(i, "w+") as file:
+                if len(j)!=0:
+                    file.write(j)
+            print(i,j)
+        
         
     lst=sys.argv
     print(lst,type(lst))
