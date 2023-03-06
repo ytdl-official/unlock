@@ -3,7 +3,7 @@ cd Build_env
 virtualenv venv
 venv\Scripts\activate
 pip install Pillow
-pip install Pyinstaller
+pip install Pyinstaller==5.6.2
 pip install requests
 pip install psutil
 pip install yt_dlp
